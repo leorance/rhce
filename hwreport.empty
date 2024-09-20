@@ -1,0 +1,5 @@
+inventory_hostname=hostname
+total_memory=memory
+bios_version=biosversion
+device_xvda_size=sdasize
+device_xvdb_size=sdbsize

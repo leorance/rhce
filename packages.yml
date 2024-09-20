@@ -1,0 +1,20 @@
+- name: Install webserver things
+  hosts: dev,balancers,prod
+  tasks:
+    - name: install requirements
+      remote_user: student
+      become: true
+      yum:
+        name: "{{ item }}"
+        state: latest
+      loop:
+        - php
+        - mariadb
+    - yum:
+        name: '@Development Tools'
+        state: latest
+      when: inventory_hostname in groups["dev"]
+    - yum:
+        name: '*'
+        state: latest
+      when: inventory_hostname in groups["dev"]

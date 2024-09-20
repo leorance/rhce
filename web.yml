@@ -1,0 +1,29 @@
+---
+- hosts: dev
+  remote_user: student
+  become: true
+  tasks:
+    - file:
+        path: /webdev
+        state: directory
+        mode: '2775'
+        group: apache
+        setype: httpd_sys_content_t
+    - file:
+        src: /webdev
+        dest: /var/www/html/webdev
+        state: link
+        setype: httpd_sys_content_t
+    - copy:
+        content: "Development"
+        dest: /webdev/index.html
+        setype: httpd_sys_content_t
+    - ansible.posix.firewalld:
+        service: http
+        state: enabled
+        immediate: true
+        permanent: true
+    - service:
+        name: httpd
+        state: started
+        enabled: true

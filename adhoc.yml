@@ -1,0 +1,21 @@
+---
+- name: Configure repository
+  hosts: all
+  tasks:
+    - name: Config baseos
+      yum_repository:
+        name: "BaseOS"
+        description: "RH294 Description"
+        baseurl: "http://sample.com/BaseOS"
+        gpgcheck: true
+        gpgkey: "http://sample.com/gpg-key"
+        #enabled: true
+
+    - name: Config AppStream
+      yum_repository:
+        name: "AppStream"
+        description: "RH294 Description"
+        baseurl: "http://sample.com/AppStream"
+        gpgcheck: true
+        gpgkey: "http://sample.com/gpg-key"
+        #enabled: true

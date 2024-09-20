@@ -1,0 +1,21 @@
+---
+- hosts: all
+  tasks:
+    - copy: 
+        src: hwreport.empty
+        dest: /tmp/hwreport.txt
+    - replace:
+        regexp: "{{item.src}}"
+        replace: "{{item.dest}}"
+        dest: /tmp/hwreport.txt
+      loop:
+        - src: "hostname"
+          dest: "{{ansible_hostname}}"
+        - src: "biosversion"
+          dest: "{{ansible_bios_version}}"
+        - src: "memory"
+          dest: "{{ansible_memtotal_mb}}"
+        - src: "sdasize"
+          dest: "{{ansible_devices.sda.size}}"
+        - src: "sdb"
+          dest: "{{ansible_devices.sdb.size | default('NONE')}}"

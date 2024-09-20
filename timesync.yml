@@ -1,0 +1,10 @@
+---
+- hosts: balancers,prod
+  remote_user: student
+  become: true
+  vars:
+    timesync_ntp_servers:
+      - hostname: 172.25.254.254
+        iburst: true
+  roles:
+    - rhel-system-roles.timesync
