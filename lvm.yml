@@ -1,9 +1,10 @@
 ---
 - hosts: all
   ignore_errors: true
+  become: true
   tasks:
     - name: 
-      lvol:
+      community.general.lvol:
         lv: data
         vg: research
         size: "1500"

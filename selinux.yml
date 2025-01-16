@@ -1,7 +1,7 @@
 ---
-- name: Configure selinux as enforcing mode
-  hosts: all
+- hosts: all
   vars:
-    - selinux_state: enforcing
+    selinux_state: enforcing
+  become: true
   roles:
-    - rhel-system-roles.selinux
+    - /usr/share/ansible/roles/linux-system-roles.selinux

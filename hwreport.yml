@@ -17,5 +17,5 @@
           dest: "{{ansible_memtotal_mb}}"
         - src: "sdasize"
           dest: "{{ansible_devices.sda.size}}"
-        - src: "sdb"
+        - src: "sdbsize"
           dest: "{{ansible_devices.sdb.size | default('NONE')}}"

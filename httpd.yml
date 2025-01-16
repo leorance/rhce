@@ -1,6 +1,5 @@
 ---
 - hosts: webservers
-  remote_user: student
   become: true
   roles:
     - apache

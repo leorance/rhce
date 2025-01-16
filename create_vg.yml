@@ -1,0 +1,7 @@
+---
+- hosts: dev
+  become: true
+  tasks:
+  - community.general.lvg:
+      vg: research
+      pvs: /dev/sdb
